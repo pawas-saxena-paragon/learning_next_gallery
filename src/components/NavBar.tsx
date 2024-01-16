@@ -11,25 +11,28 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <div className="fixed bg-black h-8  w-full top-0">
+    <div className="fixed bg-black h-16 w-full top-0 flex items-center justify-between p-4 text-white">
       <Link href="/" className=" text-white">
         Home
       </Link>
 
-      <input
-        type="text"
-        value={searchText}
-        onChange={(e) => {
-          setSearchText(e.target.value);
-        }}
-      />
-      <button
-        type="button"
-        onClick={() => triggerSearch()}
-        className="text-white"
-      >
-        Go
-      </button>
+      <div>
+        <input
+          type="text"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+          className="ml-4 p-2 border border-white rounded"
+        />
+        <button
+          type="button"
+          onClick={() => triggerSearch()}
+          className="ml-2 p-2 bg-blue-500 rounded text-white"
+        >
+          Go
+        </button>
+      </div>
     </div>
   );
 };
