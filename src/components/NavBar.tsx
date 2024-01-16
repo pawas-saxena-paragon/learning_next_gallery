@@ -23,12 +23,15 @@ const Navbar: React.FC = () => {
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
-          className="ml-4 p-2 border border-white rounded"
+          className="ml-4 p-2 border border-white rounded text-black"
         />
         <button
           type="button"
           onClick={() => triggerSearch()}
-          className="ml-2 p-2 bg-blue-500 rounded text-white"
+          className={`ml-2 p-2 ${
+            Boolean(searchText.length) ? "bg-blue-500" : "bg-gray-500"
+          } rounded text-black`}
+          disabled={!Boolean(searchText.length)}
         >
           Go
         </button>
