@@ -1,5 +1,40 @@
-const Navbar = () => {
-  return <h1>Nav bar</h1>;
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+const Navbar: React.FC = () => {
+  const [searchText, setSearchText] = useState<string>("");
+
+  const router = useRouter();
+  function triggerSearch() {
+    router.push(`/search?text=${searchText}`);
+  }
+
+  return (
+    <div className="fixed bg-black h-16 w-full top-0 flex items-center justify-between p-4 text-white">
+      <Link href="/" className=" text-white">
+        Home
+      </Link>
+
+      <div>
+        <input
+          type="text"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+          className="ml-4 p-2 border border-white rounded"
+        />
+        <button
+          type="button"
+          onClick={() => triggerSearch()}
+          className="ml-2 p-2 bg-blue-500 rounded text-white"
+        >
+          Go
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;
